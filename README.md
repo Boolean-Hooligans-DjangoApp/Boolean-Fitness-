@@ -8,20 +8,20 @@
 
 
 ## ERD
-![OurERD]()
+![OurERD](https://i.imgur.com/3d0Ckzp.png)
 
 
 
 ## Our Trello Board
 
-Trello Board :
+Trello Board : https://trello.com/b/IXoDn0hm/group-project-4
 
 
 ## Deploy Application
 
 To be determined.....
 
-### Technologies Usedgit 
+### Technologies Used
 
 
 ### Icebox Items
