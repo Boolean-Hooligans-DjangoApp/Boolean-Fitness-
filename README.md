@@ -8,13 +8,13 @@
 
 
 ## ERD
-![OurERD](https://i.imgur.com/toYte93.png)
+![OurERD](https://i.imgur.com/3d0Ckzp.png)
 
 
 
 ## Our Trello Board
 
-Trello Board :
+Trello Board : https://trello.com/b/IXoDn0hm/group-project-4
 
 
 ## Deploy Application
