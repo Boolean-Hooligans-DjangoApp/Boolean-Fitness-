@@ -8,5 +8,6 @@ urlpatterns = [
     path('groupclasses/', views.groupclass_index, name= 'class_index'),
     path('wellnesscoaches/',views.coach_index, name='coach_index'),
 
+    path('profile/', views.profile, name= 'profile'),
 
 ]

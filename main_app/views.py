@@ -10,3 +10,7 @@ def business_index(request):
 
 def groupclass_index(request):
     return render(request, '')
+
+def profile(request):
+    return render(request, 'profile/profile.html', { 'profile': profile })
+
