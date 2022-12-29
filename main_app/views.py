@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms  import UserCreationForm
+from .forms import SignUpForm
 
 def home(request):
     return render(request, 'home.html')
@@ -23,15 +24,18 @@ def profile(request):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
             login(request, user)
             return redirect('index')
         else:
             error_message = 'Invalid Sign-Up - Please try again'
 
-    form = UserCreationForm()
+    form = SignUpForm()
     context = {'form' : form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
     
