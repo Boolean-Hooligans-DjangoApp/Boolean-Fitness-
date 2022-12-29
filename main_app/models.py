@@ -10,17 +10,30 @@ REVIEWS = (
     ('1', '1'),
 )
 
+BUSINESS_TYPES = (
+    ('Y', 'Yoga'),
+    ('G', 'Gym'),
+    ('C','Chiropractor'),
+    ('R', 'Resturant'),
+    ('S', 'Shop'),
+    ('A','Acupuncture'),
+    ('M', 'Massage'),
+    )
 
 class Business(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    business_type = models.CharField(max_length=100)
+    business_type = models.CharField(
+        max_length=1,
+        choices= BUSINESS_TYPES,
+        default=BUSINESS_TYPES[0][0]
+        )
     business_hours = models.TextField(max_length=250)
     rates = models.TextField(max_length=250)
 
     def __str__(self):
-        return self.name
+        return self.name, self.business_type
 
     def get_absolute_url(self):
         return reverse("business_detail", kwargs={"business_id": self.id})
