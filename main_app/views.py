@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms  import UserCreationForm
+from django.contrib.auth.models import Group
 from .forms import SignUpForm
 
 def home(request):
@@ -30,6 +31,8 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            user_group = Group.objects.get(name="Test Group 1")
+            user.groups.add(user_group)
             login(request, user)
             return redirect('index')
         else:
