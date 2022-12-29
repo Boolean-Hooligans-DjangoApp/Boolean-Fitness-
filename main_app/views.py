@@ -4,6 +4,7 @@ from django.contrib.auth.forms  import UserCreationForm
 from django.contrib.auth.models import Group
 from .forms import SignUpForm
 
+
 def home(request):
     return render(request, 'home.html')
 

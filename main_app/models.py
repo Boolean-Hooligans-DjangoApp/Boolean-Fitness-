@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Business(models.Model):
     name = models.CharField(max_length=100)
@@ -7,3 +8,17 @@ class Business(models.Model):
     business_type = models.CharField(max_length=100)
     business_hours = models.TextField(max_length=250)
     rates = models.TextField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("detail", kwargs={"business_id": self.id})
+
+class GroupClass(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateField('Group Class Date')
+    description = models.TextField(max_length=250)
+
+    def __str__(self):
+        return f"{self.description} on {self.date}"
