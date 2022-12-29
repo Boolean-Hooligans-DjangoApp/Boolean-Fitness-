@@ -4,6 +4,17 @@ from django.contrib.auth.forms  import UserCreationForm
 from django.contrib.auth.models import Group
 from .forms import SignUpForm
 from .models import Business, GroupClass
+from django.views.generic.edit import CreateView
+
+
+
+class BusinessCreate(CreateView):
+    model = Business
+    fields = ['name', 'email', 'location', 'business_type', 'business_hours', 'rates']
+
+class GroupClassCreate(CreateView):
+    model = GroupClass
+    fields = ['name', 'date', 'description']
 
 
 def home(request):

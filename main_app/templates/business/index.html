@@ -2,6 +2,7 @@
 {% block content %}
 
 <h1>Business List</h1>
+<a href="{% url 'business_create' %}">Create a business</a>
 
 {% for business in businesses %}
   <div class="card">

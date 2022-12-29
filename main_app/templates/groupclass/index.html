@@ -2,6 +2,7 @@
 {% block content %}
 
 <h1>Group Classes</h1>
+<a href="{% url 'class_create' %}">Create a Class</a>
 
 {% for groupclass in groupclasses %}
   <div class="card">

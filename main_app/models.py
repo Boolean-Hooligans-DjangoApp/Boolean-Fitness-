@@ -13,7 +13,7 @@ class Business(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("detail", kwargs={"business_id": self.id})
+        return reverse("business_detail", kwargs={"business_id": self.id})
 
 class GroupClass(models.Model):
     name = models.CharField(max_length=100)
@@ -22,3 +22,6 @@ class GroupClass(models.Model):
 
     def __str__(self):
         return f"{self.description} on {self.date}"
+    
+    def get_absolute_url(self):
+        return reverse("class_detail", kwargs={"groupclass_id": self.id})
