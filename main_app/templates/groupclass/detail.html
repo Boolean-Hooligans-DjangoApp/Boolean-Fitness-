@@ -12,7 +12,11 @@
       <p>Description: {{ groupclass.description }}</p>
 
     </div>
-
+    <div class="card-action">
+        <a href="{% url 'class_update' groupclass.id %}">Edit</a>
+        <a href="{% url 'class_delete' groupclass.id %}">Delete</a>
+      </div>
+  </div>
   </div>
 
 

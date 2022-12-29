@@ -4,7 +4,7 @@ from django.contrib.auth.forms  import UserCreationForm
 from django.contrib.auth.models import Group
 from .forms import SignUpForm
 from .models import Business, GroupClass
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 
@@ -12,9 +12,25 @@ class BusinessCreate(CreateView):
     model = Business
     fields = ['name', 'email', 'location', 'business_type', 'business_hours', 'rates']
 
+class BusinessUpdate(UpdateView):
+    model = Business
+    fields = [ 'email', 'location', 'business_type', 'business_hours', 'rates']
+
+class BusinessDelete(DeleteView):
+    model = Business
+    success_url = '/businesses/'
+
 class GroupClassCreate(CreateView):
     model = GroupClass
     fields = ['name', 'date', 'description']
+
+class GroupClassUpdate(UpdateView):
+    model = GroupClass
+    fields = ['date', 'description']
+    
+class GroupClassDelete(DeleteView):
+    model = GroupClass
+    success_url = '/groupclasses/'
 
 
 def home(request):

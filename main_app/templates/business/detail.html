@@ -16,7 +16,10 @@
 
 
     </div>
-
+    <div class="card-action">
+        <a href="{% url 'business_update' business.id %}">Edit</a>
+        <a href="{% url 'business_delete' business.id %}">Delete</a>
+      </div>
   </div>
 
 

@@ -12,7 +12,8 @@ urlpatterns = [
     path('groupclasses/', views.groupclass_index, name= 'class_index'),
     path('groupclasses/<int:groupclass_id>/', views.groupclass_detail, name= 'class_detail'),
     path('groupclasses/create', views.GroupClassCreate.as_view(), name= 'class_create'),
-    
+    path('groupclasses/<int:pk>/update/', views.GroupClassUpdate.as_view(), name= 'class_update'),
+    path('groupclasses/<int:pk>/delete/', views.GroupClassDelete.as_view(), name= 'class_delete'),
     path('wellnesscoaches/',views.coach_index, name='coach_index'),
     path('profile/', views.profile, name= 'profile'),
     path('accounts/signup/', views.signup, name='signup'),
