@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Business List</h1>
+<h1>{{ business.name }}</h1>
 
-{% for business in businesses %}
   <div class="card">
-    <a href='{% url 'business_detail' business.id %}'>
+
     <div class="card-content">
 
-      <span class="card-title">{{ business.name }}</span>
+      <span class="card-title">Business Details:</span>
       <p>Location: {{ business.location }}</p>
       <p>Hours: {{ business.business_hours }}</p>
+      <p>Business Type: {{ business.business_type }}</p>
+      <p>Rates: {{ business.rates }}</p>
+      <p>email: {{ business.email }}</p>
 
 
     </div>
-    </a>
+
   </div>
-{% endfor %}
+
 
 {% endblock %}

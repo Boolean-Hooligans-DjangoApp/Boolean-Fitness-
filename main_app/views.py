@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms  import UserCreationForm
 from django.contrib.auth.models import Group
 from .forms import SignUpForm
+from .models import Business, GroupClass
 
 
 def home(request):
@@ -12,10 +13,20 @@ def about(request):
     return render(request, 'about.html')
 
 def business_index(request):
-    return render(request, 'business/index.html')
+    businesses = Business.objects.all()
+    return render(request, 'business/index.html', {'businesses': businesses})
+
+def business_detail(request, business_id):
+    business = Business.objects.get(id=business_id)
+    return render(request, 'business/detail.html', { 'business' : business })
 
 def groupclass_index(request):
-    return render(request, 'groupclass/index.html')
+    groupclasses = GroupClass.objects.all()
+    return render(request, 'groupclass/index.html', {'groupclasses': groupclasses})
+
+def groupclass_detail(request, groupclass_id):
+    groupclass = GroupClass.objects.get(id=groupclass_id)
+    return render(request, 'groupclass/detail.html', { 'groupclass' : groupclass })
 
 def coach_index(request):
     return render(request, 'coach/index.html', { 'coach_index': coach_index })
