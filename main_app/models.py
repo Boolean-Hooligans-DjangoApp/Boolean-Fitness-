@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Business(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
@@ -15,6 +16,7 @@ class Business(models.Model):
     def get_absolute_url(self):
         return reverse("business_detail", kwargs={"business_id": self.id})
 
+
 class GroupClass(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField('Group Class Date')
@@ -22,7 +24,7 @@ class GroupClass(models.Model):
 
     def __str__(self):
         return f"{self.description} on {self.date}"
-    
+
     def get_absolute_url(self):
         return reverse("class_detail", kwargs={"groupclass_id": self.id})
 
