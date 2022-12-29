@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms  import UserCreationForm
 from django.contrib.auth.models import Group
 from .forms import SignUpForm
-from .models import Business, GroupClass
+from .models import Business, GroupClass, Coach
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
@@ -31,6 +31,18 @@ class GroupClassUpdate(UpdateView):
 class GroupClassDelete(DeleteView):
     model = GroupClass
     success_url = '/groupclasses/'
+
+class CoachCreate(CreateView):
+    model = Coach
+    fields = ['name', 'email', 'location', 'coach_specialty', 'bio', 'availability']
+
+class CoachUpdate(UpdateView):
+    model = Coach
+    fields = ['name', 'email', 'location', 'coach_specialty', 'bio', 'availability']
+    
+class CoachDelete(DeleteView):
+    model = Coach
+    success_url = '/coaches/'
 
 
 def home(request):
