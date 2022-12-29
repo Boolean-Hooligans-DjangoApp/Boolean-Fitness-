@@ -38,4 +38,4 @@ class Coach(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("business_detail", kwargs={"business_id": self.id})
+        return reverse("coach_detail", kwargs={"coach_id": self.id})

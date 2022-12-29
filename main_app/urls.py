@@ -15,6 +15,7 @@ urlpatterns = [
     path('groupclasses/<int:pk>/update/', views.GroupClassUpdate.as_view(), name= 'class_update'),
     path('groupclasses/<int:pk>/delete/', views.GroupClassDelete.as_view(), name= 'class_delete'),
     path('wellnesscoaches/',views.coach_index, name='coach_index'),
+    path('wellnesscoaches/<int:coach_id>/', views.coach_detail, name= 'coach_detail'),
     path('wellnesscoaches/create', views.CoachCreate.as_view(), name= 'coach_create'),
     path('wellnesscoaches/<int:pk>/update/', views.CoachUpdate.as_view(), name= 'coach_update'),
     path('wellnesscoaches/<int:pk>/delete/', views.CoachDelete.as_view(), name= 'coach_delete'),
