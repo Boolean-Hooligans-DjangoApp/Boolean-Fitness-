@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms  import UserCreationForm
 from .forms import SignUpForm
 
+
 def home(request):
     return render(request, 'home.html')
 
