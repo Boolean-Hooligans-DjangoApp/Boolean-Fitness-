@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ coach.name }}</h1>
+
+    <div class="card">
+
+        <div class="card-content">
+
+        <span class="card-title">Coaches/Trainers Details:</span>
+        <p>Bio: {{ coach.bio }}</p>
+        <p>Description: {{ groupclass.description }}</p>
+        <p>Email: {{ coach.email }}</p>
+        <p>Location: {{ coach.location }}</p>
+        <p>Specialty: {{ coach.specialty }}</p>
+        <p>Schedule/Availability: {{ coach.availability }}</p>
+        </div>
+        <div class="card-action">
+            <a href="{% url 'coach_update' coach.id %}">Edit</a>
+            <a href="{% url 'coach_delete' coach.id %}">Delete</a>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Coaches</h1>
-<ul>
-    <li>Local Coach 1</li>
-    <li>Local Coach 2</li>
-    <li>Local Coach 3</li>
-    <li>Local Coach 4</li>
-</ul>
+
+<h1>Coaches/Trainers</h1>
+
+{% for coach in groupclasses %}
+    <div class="card">
+        <a href='{% url 'coach_detail' coach.id %}'>
+        <div class="card-content">
+
+        <span class="card-title">{{ coach.name }}</span>
+        <p>Specialty: {{ coach.specialty }}</p>
+
+
+
+        </div>
+        </a>
+    </div>
+{% endfor %}
+
 {% endblock %}
