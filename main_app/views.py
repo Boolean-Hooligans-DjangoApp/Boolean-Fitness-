@@ -34,11 +34,11 @@ class GroupClassDelete(DeleteView):
 
 class CoachCreate(CreateView):
     model = Coach
-    fields = ['name', 'email', 'location', 'coach_specialty', 'bio', ]
+    fields = ['name', 'email', 'location', 'specialty', 'bio', 'availability' ]
 
 class CoachUpdate(UpdateView):
     model = Coach
-    fields = ['date', 'description']
+    fields = ['name', 'email', 'location', 'specialty', 'bio', 'availability' ]
     
 class CoachDelete(DeleteView):
     model = Coach
