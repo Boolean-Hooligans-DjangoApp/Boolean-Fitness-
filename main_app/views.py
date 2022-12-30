@@ -34,11 +34,11 @@ class GroupClassDelete(DeleteView):
 
 class CoachCreate(CreateView):
     model = Coach
-    fields = ['name', 'email', 'location', 'coach_specialty', 'bio', 'availability']
+    fields = ['name', 'email', 'location', 'specialty', 'bio', 'availability' ]
 
 class CoachUpdate(UpdateView):
     model = Coach
-    fields = ['name', 'email', 'location', 'coach_specialty', 'bio', 'availability']
+    fields = ['name', 'email', 'location', 'specialty', 'bio', 'availability' ]
     
 class CoachDelete(DeleteView):
     model = Coach
@@ -68,7 +68,12 @@ def groupclass_detail(request, groupclass_id):
     return render(request, 'groupclass/detail.html', { 'groupclass' : groupclass })
 
 def coach_index(request):
-    return render(request, 'coach/index.html', { 'coach_index': coach_index })
+    coaches = Coach.objects.all()
+    return render(request, 'coach/index.html', {'coaches': coaches})
+
+def coach_detail(request, coach_id):
+    coach = Coach.objects.get(id=coach_id)
+    return render(request, 'coach/detail.html', { 'coach' : coach })
 
 def profile(request):
     return render(request, 'profile/profile.html', { 'profile': profile })
