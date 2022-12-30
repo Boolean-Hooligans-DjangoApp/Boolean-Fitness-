@@ -21,5 +21,5 @@ urlpatterns = [
     path('coaches/<int:pk>/delete/', views.CoachDelete.as_view(), name= 'coach_delete'),
     path('profile/', views.profile, name= 'profile'),
     path('accounts/signup/', views.signup, name='signup'),
-
+    path('groupclassess/<int:groupclass_id>/add_review/', views.add_review, name='add_review'),
 ]

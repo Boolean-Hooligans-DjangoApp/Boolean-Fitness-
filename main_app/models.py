@@ -1,6 +1,14 @@
 from django.db import models
 from django.urls import reverse
 
+REVIEWS = (
+    ('5', '5'),
+    ('4', '4'),
+    ('3', '3'),
+    ('2', '2'),
+    ('1', '1'),
+)
+
 
 class Business(models.Model):
     name = models.CharField(max_length=100)
@@ -27,6 +35,7 @@ class GroupClass(models.Model):
 
     def get_absolute_url(self):
         return reverse("class_detail", kwargs={"groupclass_id": self.id})
+
 
 class Coach(models.Model):
     name = models.CharField(max_length=100)

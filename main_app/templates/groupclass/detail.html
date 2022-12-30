@@ -16,8 +16,39 @@
         <a href="{% url 'class_update' groupclass.id %}">Edit</a>
         <a href="{% url 'class_delete' groupclass.id %}">Delete</a>
       </div>
+      <div class="col s6">
+        <from action="{% url 'add_review' groupclass.id %}" method="POST">
+          {% csrf_token %}
+          {{ review_form.as_p }}
+          <input type="submit" class="btn" value="Add Review">
+        </form>
+        <table class="striped">
+          <thead>
+            <tr><th>Date</th><th>Review</th></tr>
+          </thead>
+          <tbody>
+            {% for review in groupclass.review_set.all %}
+              <tr>
+                <td>{{review.date}}</td>
+                <td>{{review.get_review_display}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>    
   </div>
   </div>
+  <script>
+    const dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+      format: 'yyyy-mm-dd',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
 
+    const selectEl = document.getElementById('id_review');
+    M.FormSelect.init(selectEl);
+  </script>
 
 {% endblock %}

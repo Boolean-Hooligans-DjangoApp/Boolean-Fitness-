@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group
 from .forms import SignUpForm
 from .models import Business, GroupClass, Coach
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import ReviewForm
 
 
 
@@ -65,7 +66,8 @@ def groupclass_index(request):
 
 def groupclass_detail(request, groupclass_id):
     groupclass = GroupClass.objects.get(id=groupclass_id)
-    return render(request, 'groupclass/detail.html', { 'groupclass' : groupclass })
+    review_form = ReviewForm()
+    return render(request, 'groupclass/detail.html', { 'groupclass' : groupclass, 'review_form': review_form })
 
 def coach_index(request):
     coaches = Coach.objects.all()
@@ -98,4 +100,10 @@ def signup(request):
     context = {'form' : form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
     
-
+def add_review(request, groupclass_id):
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.groupclass_id = groupclass_id
+        new_review.save()
+    return redirect('detail', groupclass_id=groupclass_id)
