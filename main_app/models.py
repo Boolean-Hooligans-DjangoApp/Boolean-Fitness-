@@ -55,7 +55,7 @@ class Coach(models.Model):
 
 class Review(models.Model):
     groupclass = models.ForeignKey(
-        GroupClass, on_delete=models.CASCADE, related_name='comments')
+        GroupClass, on_delete=models.CASCADE)
     review = models.CharField(
         max_length=1,
         choices=REVIEWS,
