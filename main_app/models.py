@@ -20,6 +20,18 @@ BUSINESS_TYPES = (
     ('M', 'Massage'),
     )
 
+BUSINESS_HOURS = (
+    ('1', '24 hours a day'),
+    ('2', 'Hours to be determined'),
+    ('3', 'Contact business for more information'),
+    ('4', '8am - 5pm'),
+    ('5', '8am - 10pm'),
+    ('6', '6am - 10pm'),
+    ('7', '12pm - 12am'),
+    ('8', '9am - 6pm'),
+    ('9', 'Closed for the Holidays'),
+)
+
 class Business(models.Model):
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
@@ -29,7 +41,11 @@ class Business(models.Model):
         choices= BUSINESS_TYPES,
         default=BUSINESS_TYPES[0][0]
         )
-    business_hours = models.TextField(max_length=250)
+    business_hours = models.CharField(
+        max_length= 1,
+        choices= BUSINESS_HOURS,
+        default= BUSINESS_HOURS[0][0]
+    )
     rates = models.TextField(max_length=250)
 
     def __str__(self):
