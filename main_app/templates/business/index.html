@@ -2,7 +2,9 @@
 {% block content %}
 
 <h1>Business List</h1>
-<a href="{% url 'business_create' %}">Create a business</a>
+{% if perms.main_app.add_business %}
+  <a href="{% url 'business_create' %}">Create a business</a>
+{% endif %}
 
 {% for business in businesses %}
   <div class="card">
