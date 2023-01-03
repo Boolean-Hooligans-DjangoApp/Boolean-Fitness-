@@ -15,4 +15,4 @@ class SignUpForm(UserCreationForm):
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
-        fields = ['date', 'review']
+        fields = ['review', 'comment']

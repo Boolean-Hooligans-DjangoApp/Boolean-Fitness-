@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 REVIEWS = (
     ('5', '5'),
     ('4', '4'),
@@ -50,3 +51,17 @@ class Coach(models.Model):
 
     def get_absolute_url(self):
         return reverse("coach_detail", kwargs={"coach_id": self.id})
+
+
+class Review(models.Model):
+    groupclass = models.ForeignKey(
+        GroupClass, on_delete=models.CASCADE, related_name='comments')
+    review = models.CharField(
+        max_length=1,
+        choices=REVIEWS,
+        default=REVIEWS[0][0]
+    )
+    comment = models.CharField(max_length=500)
+
+    def __str__(self):
+        return f"{self.review} on {self.comment}"
