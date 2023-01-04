@@ -11,42 +11,42 @@ REVIEWS = (
 )
 
 BUSINESS_TYPES = (
-    ('Y', 'Yoga'),
-    ('G', 'Gym'),
-    ('C','Chiropractor'),
-    ('R', 'Resturant'),
-    ('S', 'Shop'),
-    ('A','Acupuncture'),
-    ('M', 'Massage'),
+    ('Yoga', 'Yoga'),
+    ('Gym', 'Gym'),
+    ('Chiropractor','Chiropractor'),
+    ('Resturant', 'Resturant'),
+    ('Shop', 'Shop'),
+    ('Acupuncture','Acupuncture'),
+    ('Massage', 'Massage'),
     )
 
 BUSINESS_HOURS = (
-    ('1', '24 hours a day'),
-    ('2', 'Hours to be determined'),
-    ('3', 'Contact business for more information'),
-    ('4', '8am - 5pm'),
-    ('5', '8am - 10pm'),
-    ('6', '6am - 10pm'),
-    ('7', '12pm - 12am'),
-    ('8', '9am - 6pm'),
-    ('9', 'Closed for the Holidays'),
+    ('24 hours a day', '24 hours a day'),
+    ('Hours to be determined', 'Hours to be determined'),
+    ('Contact business for more information', 'Contact business for more information'),
+    ('8am - 5pm', '8am - 5pm'),
+    ('8am - 10pm', '8am - 10pm'),
+    ('6am - 10pm', '6am - 10pm'),
+    ('12pm - 12am', '12pm - 12am'),
+    ('9am - 6pm', '9am - 6pm'),
+    ('Closed for the Holidays', 'Closed for the Holidays'),
 )
 
 class Business(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, help_text='Please enter the name of your business / establishment')
+    email = models.CharField(max_length=100, help_text='e.g. example@email.com')
+    location = models.PositiveIntegerField('Zip Code',  help_text='Please enter your 5 digit zip or postal code')
     business_type = models.CharField(
-        max_length=1,
+        max_length=100,
         choices= BUSINESS_TYPES,
         default=BUSINESS_TYPES[0][0]
         )
     business_hours = models.CharField(
-        max_length= 1,
+        max_length= 100,
         choices= BUSINESS_HOURS,
         default= BUSINESS_HOURS[0][0]
     )
-    rates = models.TextField(max_length=250)
+    rates = models.TextField(max_length=500, help_text='Please add the rates and prices of the services / goods you offer')
 
     def __str__(self):
         return self.name, self.business_type
@@ -56,9 +56,9 @@ class Business(models.Model):
 
 
 class GroupClass(models.Model):
-    name = models.CharField(max_length=100)
-    date = models.DateField('Group Class Date')
-    description = models.TextField(max_length=250)
+    name = models.CharField(max_length=100, help_text='Please enter the name of your group class / activity')
+    date = models.DateField('Group Class Date', help_text='Please select the date the event will take place')
+    description = models.TextField(max_length=500, help_text='Please add any additional information regarding the event')
 
     def __str__(self):
         return f"{self.description} on {self.date}"
@@ -68,12 +68,12 @@ class GroupClass(models.Model):
 
 
 class Coach(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
-    specialty = models.CharField(max_length=100)
-    bio = models.TextField(max_length=250)
-    availability = models.TextField(max_length=250)
+    name = models.CharField(max_length=100, help_text='Please enter your name here')
+    email = models.CharField(max_length=100, help_text='e.g. example@email.com')
+    location = models.PositiveIntegerField('Zip Code', help_text='Please enter your 5 digit zip or postal code')
+    specialty = models.CharField(max_length=100, help_text='Please enter your specialty / area of expertise here')
+    bio = models.TextField(max_length=250, help_text='Please add additional information about your qualifications and program')
+    availability = models.TextField(max_length=250, help_text='Please add information regarding your availability')
 
     def __str__(self):
         return self.name
