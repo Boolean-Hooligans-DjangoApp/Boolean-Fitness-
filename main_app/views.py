@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from .forms import SignUpForm
 from .models import Business, GroupClass, Coach, Review
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import ReviewForm
+from .forms import GroupClassReviewForm, BusinessReviewForm, CoachReviewForm
 
 
 
@@ -72,7 +72,7 @@ def business_index(request):
 
 def business_detail(request, business_id):
     business = Business.objects.get(id=business_id)
-    review_form = ReviewForm()
+    review_form = BusinessReviewForm()
     return render(request, 'business/detail.html', {'business': business
 , 'review_form': review_form})
 
@@ -84,7 +84,7 @@ def groupclass_index(request):
 
 def groupclass_detail(request, groupclass_id):
     groupclass = GroupClass.objects.get(id=groupclass_id)
-    review_form = ReviewForm()
+    review_form = GroupClassReviewForm()
     return render(request, 'groupclass/detail.html', {'groupclass': groupclass, 'review_form': review_form})
 
 
@@ -95,7 +95,7 @@ def coach_index(request):
 
 def coach_detail(request, coach_id):
     coach = Coach.objects.get(id=coach_id)
-    review_form = ReviewForm()
+    review_form = CoachReviewForm()
     return render(request, 'coach/detail.html', {'coach': coach, 'review_form': review_form})
 
 
@@ -144,8 +144,8 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 
-def add_review(request, groupclass_id):
-    form = ReviewForm(request.POST)
+def add_groupclass_review(request, groupclass_id):
+    form = GroupClassReviewForm(request.POST)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.groupclass_id = groupclass_id
@@ -153,7 +153,7 @@ def add_review(request, groupclass_id):
     return redirect('class_detail', groupclass_id=groupclass_id)
 
 def add_coach_review(request, coach_id):
-    form = ReviewForm(request.POST)
+    form = CoachReviewForm(request.POST)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.coach_id = coach_id
@@ -161,7 +161,7 @@ def add_coach_review(request, coach_id):
     return redirect('coach_detail', coach_id=coach_id)
 
 def add_business_review(request, business_id):
-    form = ReviewForm(request.POST)
+    form = BusinessReviewForm(request.POST)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.business_id = business_id

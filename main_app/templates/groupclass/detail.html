@@ -20,7 +20,7 @@
     </div>  
   </div>
   <div class="col s6">
-    <form action="{% url 'add_review' groupclass.id %}" method="POST">
+    <form action="{% url 'add_groupclass_review' groupclass.id %}" method="POST">
       {% csrf_token %}
       {{ review_form.as_p }}
       <input type="submit" class="btn" value="Add Review">
