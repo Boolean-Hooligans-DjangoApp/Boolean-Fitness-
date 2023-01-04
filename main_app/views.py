@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import ReviewForm
 
 
+
 class BusinessCreate(CreateView):
     model = Business
     fields = ['name', 'email', 'location', 'business_type', 'business_hours', 'rates']
@@ -102,8 +103,7 @@ def upgrade_profile(request):
     return render(request, 'profile/profile.html', {'profile': profile})
 
 def downgrade_profile(request):
-    print("it worked")
-    user_group = Group.objects.get(name="Business Account")
+    user_group, _ = Group.objects.get_or_create(name="Business Account")
     request.user.groups.remove(user_group)
     return render(request, 'profile/profile.html', {'profile': profile})
 
@@ -117,7 +117,7 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            user_group = Group.objects.get(name="Test Group 1")
+            user_group, _ = Group.objects.get_or_create(name="Default User")
             user.groups.add(user_group)
             login(request, user)
             return redirect('index')
