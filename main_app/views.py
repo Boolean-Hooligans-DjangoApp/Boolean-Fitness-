@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
 from .forms import SignUpForm
-from .models import Business, GroupClass, Coach
+from .models import Business, GroupClass, Coach, Review
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import ReviewForm
 
@@ -98,7 +99,11 @@ def profile(request):
 
 def upgrade_profile(request):
     print("it worked")
-    user_group = Group.objects.get(name="Business Account")
+    user_group, _ = Group.objects.get_or_create(name="Business Account")
+    bus_add_perm = Permission.objects.get(name='Can add business')
+    bus_change_perm = Permission.objects.get(name='Can change business')
+    bus_delete_perm = Permission.objects.get(name='Can delete business')
+    user_group.permissions.add(bus_add_perm, bus_change_perm, bus_delete_perm)
     request.user.groups.add(user_group)
     return render(request, 'profile/profile.html', {'profile': profile})
 
@@ -118,6 +123,11 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             user_group, _ = Group.objects.get_or_create(name="Default User")
+            bus_view_perm = Permission.objects.get(name='Can view business')
+            group_view_perm = Permission.objects.get(name='Can view group class')
+            coach_view_perm = Permission.objects.get(name='Can view coach')
+            review_view_perm = Permission.objects.get(name='Can view review')
+            user_group.permissions.add(bus_view_perm, group_view_perm, coach_view_perm, review_view_perm)
             user.groups.add(user_group)
             login(request, user)
             return redirect('index')
