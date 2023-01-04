@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link
       rel="stylesheet"
       type="text/css"
@@ -20,35 +21,46 @@
   <body>
     <header class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper red">
           <ul>
             <li>
-              <a href="{% url 'home' %}" class="left brand-logo"
-                >&nbsp;&nbsp;Project 4</a
-              >
+                <a href="{% url 'home' %}" class="left brand-logo"
+                >&nbsp;&nbsp;Boolean Fitness  <img src="https://i.imgur.com/C1eFpDx.gif" alt="Animated GIF" width="95" height="65" class="brand-logo"></a>
+              
             </li>
           </ul>
           <ul class="right">
-            <li><a href="{% url 'about' %}">About</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'index' %}">Businesses</a></li>
-            <li><a href="{% url 'class_index' %}">Group Classes</a></li>
-            <li><a href="{% url 'coach_index' %}">Wellness Coaches</a></li>
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">reorder</i></a></li>
           </ul>
         </div>
       </nav>
     </header>
+
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="{% url 'about' %}">About</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'index' %}">Businesses</a></li>
+      <li><a href="{% url 'class_index' %}">Group Classes</a></li>
+      <li><a href="{% url 'coach_index' %}">Wellness Coaches</a></li>
+      <li><a href="{% url 'profile' %}">Profile</a></li>
+      <li><a href="{% url 'logout' %}">Log Out</a></li>
+      {% else %}
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      <li><a href="{% url 'login' %}">Log In</a></li>
+      {% endif %}
+    </ul>
+
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">
+    <footer class="page-footer black">
+      <div class="right ">
         All Rights Reserved, &copy; 2022 Boolean Hooligans &nbsp;
       </div>
     </footer>
   </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.dropdown-trigger');
+      var instances = M.Dropdown.init(elems);
+    });
+  </script>
 </html>

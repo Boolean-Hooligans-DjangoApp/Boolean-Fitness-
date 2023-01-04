@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Home Page</h1>
+<h1 class="homeTitle center">Welcome to Boolean Fitness</h1>
+<p class="slogan">Take the first step towards a healthier lifestyle and sign up for Boolean Fitness today.</p>
+<div class="localImage center">
+    <img src="https://i.imgur.com/ULKlH4l.jpg" alt="Fitness Class">
+    <img src="https://i.imgur.com/kFSpjLx.jpg" alt="Gyms">
+    <img src="https://i.imgur.com/nSjaCJa.jpg" alt="Wellness Coach">
+</div>
+<br>
+<div style="display: flex; justify-content: space-evenly; align-items: center;">
+    <a class="waves-effect waves-light btn-small blue" href="{% url 'signup' %}">Sign Up Now!</a>
+    <a class="waves-effect waves-light btn-small blue" href="{% url 'login' %}">Login!</a>
+</div>
+<p class="motto">Whether you're a beginner or a seasoned athlete, Boolean Fitness has something for everyone. Sign up now and start your journey towards a healthier you!</p>
 {% endblock %}
+

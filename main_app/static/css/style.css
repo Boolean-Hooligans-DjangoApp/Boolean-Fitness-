@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: lightgrey;
   }
   
   main {
@@ -13,3 +14,39 @@ body {
     text-align: right;
   }
   
+  .slogan {
+    font-size: 22px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    font-family: Chalkboard;
+    text-align: center;
+  }
+
+
+  .homeTitle {
+    font-family: Chalkboard;
+  }
+
+  .localImage img{
+    position: relative;
+    align-items: center;
+    width: 270px;
+    height: 180px;
+    object-fit: cover;
+    position: relative;
+    top: 0;
+    left: 0;
+    object-position: center;
+  }
+  
+  
+  .motto {
+    font-size: 22px;
+    font-family: Chalkboard;
+    text-align: center;
+  }
+    
+    
+    
+    
+
