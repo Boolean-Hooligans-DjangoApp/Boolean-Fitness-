@@ -2,8 +2,11 @@
 {% block content %}
 
 <h1>Group Classes</h1>
+{% if perms.main_app.add_groupclass %}
 <a href="{% url 'class_create' %}">Create a Class</a>
+{% endif %}
 
+{% if perms.main_app.view_groupclass %}
 {% for groupclass in groupclasses %}
   <div class="card">
     <a href='{% url 'class_detail' groupclass.id %}'>
@@ -18,5 +21,6 @@
     </a>
   </div>
 {% endfor %}
+{% endif %}
 
 {% endblock %}

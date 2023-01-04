@@ -10,8 +10,7 @@ from .forms import ReviewForm
 
 class BusinessCreate(CreateView):
     model = Business
-    fields = ['name', 'email', 'location',
-              'business_type', 'business_hours', 'rates']
+    fields = ['name', 'email', 'location', 'business_type', 'business_hours', 'rates']
 
 
 class BusinessUpdate(UpdateView):
@@ -94,6 +93,18 @@ def coach_detail(request, coach_id):
 
 
 def profile(request):
+    return render(request, 'profile/profile.html', {'profile': profile})
+
+def upgrade_profile(request):
+    print("it worked")
+    user_group = Group.objects.get(name="Business Account")
+    request.user.groups.add(user_group)
+    return render(request, 'profile/profile.html', {'profile': profile})
+
+def downgrade_profile(request):
+    print("it worked")
+    user_group = Group.objects.get(name="Business Account")
+    request.user.groups.remove(user_group)
     return render(request, 'profile/profile.html', {'profile': profile})
 
 
