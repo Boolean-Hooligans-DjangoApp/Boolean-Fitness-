@@ -22,7 +22,7 @@ urlpatterns = [
     path('coaches/<int:pk>/delete/', views.CoachDelete.as_view(), name='coach_delete'),
     path('profile/', views.profile, name='profile'),
     path('profile/upgrade', views.upgrade_profile, name='upgrade_profile'),
-        path('profile/downgrade', views.downgrade_profile, name='downgrade_profile'),
+    path('profile/downgrade', views.downgrade_profile, name='downgrade_profile'),
     path('accounts/signup/', views.signup, name='signup'),
     
 ]
