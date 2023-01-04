@@ -2,8 +2,13 @@
 {% block content %}
 <h1 class="homeTitle center">Welcome to Boolean Fitness</h1>
 <p class="slogan">Take the first step towards a healthier lifestyle and sign up for Boolean Fitness today.</p>
-
 <div class="carousel carousel-slider center">
+    <a onclick="prev()" class="prev btn-floating btn waves-effect waves-light red"><i class="material-icons">chevron_left</i></a>
+
+    <a onclick="next()" class="next btn-floating btn waves-effect waves-light red"><i class="material-icons">chevron_right</i></a>
+    <div class="carousel-fixed-item left">
+        <a class="btn waves-effect white grey-text darken-text-2 push-s5">next</a>
+    </div>
     <div class="carousel-fixed-item center"></div>
     <div class="carousel-item" href="#one!">
         <img src="https://i.imgur.com/ULKlH4l.jpg" alt="Fitness Class">
