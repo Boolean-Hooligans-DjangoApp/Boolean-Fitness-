@@ -32,6 +32,7 @@
       <tbody>
         {% for review in groupclass.review_set.all %}
           <tr>
+            <td>{{ review.date|date:"D d M Y" }}</td>
             <td>{{review.review}}</td>
             <td>{{review.comment}}</td>
           </tr>

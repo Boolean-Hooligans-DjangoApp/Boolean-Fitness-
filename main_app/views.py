@@ -72,7 +72,9 @@ def business_index(request):
 
 def business_detail(request, business_id):
     business = Business.objects.get(id=business_id)
-    return render(request, 'business/detail.html', {'business': business})
+    review_form = ReviewForm()
+    return render(request, 'business/detail.html', {'business': business
+, 'review_form': review_form})
 
 
 def groupclass_index(request):
@@ -93,7 +95,8 @@ def coach_index(request):
 
 def coach_detail(request, coach_id):
     coach = Coach.objects.get(id=coach_id)
-    return render(request, 'coach/detail.html', {'coach': coach})
+    review_form = ReviewForm()
+    return render(request, 'coach/detail.html', {'coach': coach, 'review_form': review_form})
 
 
 def profile(request):
@@ -148,3 +151,19 @@ def add_review(request, groupclass_id):
         new_review.groupclass_id = groupclass_id
         new_review.save()
     return redirect('class_detail', groupclass_id=groupclass_id)
+
+def add_coach_review(request, coach_id):
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.coach_id = coach_id
+        new_review.save()
+    return redirect('coach_detail', coach_id=coach_id)
+
+def add_business_review(request, business_id):
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.business_id = business_id
+        new_review.save()
+    return redirect('business_detail', business_id=business_id)
