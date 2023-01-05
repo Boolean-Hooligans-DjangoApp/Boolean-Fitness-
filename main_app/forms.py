@@ -27,3 +27,5 @@ class BusinessReviewForm(ModelForm):
         model = BusinessReview
         fields = ['review', 'comment']
 
+class SearchForm(forms.Form):
+    search = forms.CharField(label= 'Search', max_length=50)

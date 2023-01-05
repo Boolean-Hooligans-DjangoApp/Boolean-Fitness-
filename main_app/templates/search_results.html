@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Search Results</h1>
+<form action= {% url 'search_results' %} method= 'GET'>
+    {{ form }}
+</form>
+<ul>
+    {% for business in object_list %}
+    <li>
+        {{ business.name }}, {{business.location}}
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}

@@ -3,11 +3,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
-from django.views.generic import ListView
+from django.views.generic import ListView, FormView
+from django.contrib.postgres.search import SearchVector
 from .forms import SignUpForm
 from .models import Business, GroupClass, Coach
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import GroupClassReviewForm, BusinessReviewForm, CoachReviewForm
+from .forms import GroupClassReviewForm, BusinessReviewForm, CoachReviewForm, SearchForm
 
 
 class BusinessCreate(CreateView):
@@ -57,9 +58,17 @@ class CoachDelete(DeleteView):
     model = Coach
     success_url = '/coaches/'
 
-class SearchResultsView(ListView):
+class SearchResultsView(ListView, FormView):
     model = Business
     template_name = 'search_results.html'
+    form_class = SearchForm
+
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        object_list = Business.objects.annotate(
+            search=SearchVector('name','location'),
+        ).filter(search=query)
+        return object_list
 
 
 def home(request):
