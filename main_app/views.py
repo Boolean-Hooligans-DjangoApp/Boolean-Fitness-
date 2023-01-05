@@ -9,10 +9,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import GroupClassReviewForm, BusinessReviewForm, CoachReviewForm
 
 
-
 class BusinessCreate(CreateView):
     model = Business
-    fields = ['name', 'email', 'location', 'business_type', 'business_hours', 'rates']
+    fields = ['name', 'email', 'location',
+              'business_type', 'business_hours', 'rates']
 
 
 class BusinessUpdate(UpdateView):
@@ -73,8 +73,7 @@ def business_index(request):
 def business_detail(request, business_id):
     business = Business.objects.get(id=business_id)
     review_form = BusinessReviewForm()
-    return render(request, 'business/detail.html', {'business': business
-, 'review_form': review_form})
+    return render(request, 'business/detail.html', {'business': business, 'review_form': review_form})
 
 
 def groupclass_index(request):
@@ -102,6 +101,7 @@ def coach_detail(request, coach_id):
 def profile(request):
     return render(request, 'profile/profile.html', {'profile': profile})
 
+
 def upgrade_profile(request):
     print("it worked")
     user_group, _ = Group.objects.get_or_create(name="Business Account")
@@ -111,6 +111,7 @@ def upgrade_profile(request):
     user_group.permissions.add(bus_add_perm, bus_change_perm, bus_delete_perm)
     request.user.groups.add(user_group)
     return render(request, 'profile/profile.html', {'profile': profile})
+
 
 def downgrade_profile(request):
     user_group, _ = Group.objects.get_or_create(name="Business Account")
@@ -129,10 +130,12 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             user_group, _ = Group.objects.get_or_create(name="Default User")
             bus_view_perm = Permission.objects.get(name='Can view business')
-            group_view_perm = Permission.objects.get(name='Can view group class')
+            group_view_perm = Permission.objects.get(
+                name='Can view group class')
             coach_view_perm = Permission.objects.get(name='Can view coach')
             review_view_perm = Permission.objects.get(name='Can view review')
-            user_group.permissions.add(bus_view_perm, group_view_perm, coach_view_perm, review_view_perm)
+            user_group.permissions.add(
+                bus_view_perm, group_view_perm, coach_view_perm, review_view_perm)
             user.groups.add(user_group)
             login(request, user)
             return redirect('index')
@@ -152,6 +155,7 @@ def add_groupclass_review(request, groupclass_id):
         new_review.save()
     return redirect('class_detail', groupclass_id=groupclass_id)
 
+
 def add_coach_review(request, coach_id):
     form = CoachReviewForm(request.POST)
     if form.is_valid():
@@ -159,6 +163,7 @@ def add_coach_review(request, coach_id):
         new_review.coach_id = coach_id
         new_review.save()
     return redirect('coach_detail', coach_id=coach_id)
+
 
 def add_business_review(request, business_id):
     form = BusinessReviewForm(request.POST)

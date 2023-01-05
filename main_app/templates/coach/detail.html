@@ -29,10 +29,10 @@
         </form>
         <table class="striped">
           <thead>
-          <th>Review</th></tr><th>Comment</th></tr>
+          </tr><th>Comment</th></tr>
           </thead>
           <tbody>
-            {% for review in coach.review_set.all %}
+            {% for review in coach.coachreview_set.all %}
               <tr>
                 <td>{{review.date|date:"D d M Y"}}</td>
                 <td>{{review.review}}</td>

@@ -97,6 +97,9 @@ class GroupClassReview(models.Model):
 
     def __str__(self):
         return f"{self.review} on {self.comment}"
+        
+    class Meta:
+        ordering=['-date']
 
 class CoachReview(models.Model):
     coach = models.ForeignKey(Coach, on_delete=models.CASCADE)
@@ -111,6 +114,9 @@ class CoachReview(models.Model):
     def __str__(self):
         return f"{self.review} on {self.comment}"
 
+    class Meta:
+        ordering=['-date']
+
 class BusinessReview(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
     review = models.CharField(
@@ -124,3 +130,5 @@ class BusinessReview(models.Model):
     def __str__(self):
         return f"{self.review} on {self.comment}"
 
+    class Meta:
+        ordering=['-date']
