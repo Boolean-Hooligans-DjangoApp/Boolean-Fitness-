@@ -20,18 +20,19 @@
     </div>  
   </div>
   <div class="col s6">
-    <form action="{% url 'add_review' groupclass.id %}" method="POST">
+    <form action="{% url 'add_groupclass_review' groupclass.id %}" method="POST">
       {% csrf_token %}
       {{ review_form.as_p }}
       <input type="submit" class="btn" value="Add Review">
     </form>
     <table class="striped">
       <thead>
-      <th>Review</th></tr><th>Comment</th></tr>
+      </tr><th>Comment</th></tr>
       </thead>
       <tbody>
-        {% for review in groupclass.review_set.all %}
+        {% for review in groupclass.groupclassreview_set.all %}
           <tr>
+            <td>{{ review.date|date:"D d M Y" }}</td>
             <td>{{review.review}}</td>
             <td>{{review.comment}}</td>
           </tr>

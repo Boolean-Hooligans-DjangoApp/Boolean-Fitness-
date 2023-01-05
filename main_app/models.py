@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 
 REVIEWS = (
@@ -82,7 +83,8 @@ class Coach(models.Model):
         return reverse("coach_detail", kwargs={"coach_id": self.id})
 
 
-class Review(models.Model):
+class GroupClassReview(models.Model):
+
     groupclass = models.ForeignKey(
         GroupClass, on_delete=models.CASCADE)
     review = models.CharField(
@@ -91,6 +93,42 @@ class Review(models.Model):
         default=REVIEWS[0][0]
     )
     comment = models.CharField(max_length=500)
+    date = models.DateTimeField(("Date"), default=date.today)
 
     def __str__(self):
         return f"{self.review} on {self.comment}"
+        
+    class Meta:
+        ordering=['-date']
+
+class CoachReview(models.Model):
+    coach = models.ForeignKey(Coach, on_delete=models.CASCADE)
+    review = models.CharField(
+        max_length=1,
+        choices=REVIEWS,
+        default=REVIEWS[0][0]
+    )
+    comment = models.CharField(max_length=500)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.review} on {self.comment}"
+
+    class Meta:
+        ordering=['-date']
+
+class BusinessReview(models.Model):
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    review = models.CharField(
+        max_length=1,
+        choices=REVIEWS,
+        default=REVIEWS[0][0]
+    )
+    comment = models.CharField(max_length=500)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.review} on {self.comment}"
+
+    class Meta:
+        ordering=['-date']
