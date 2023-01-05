@@ -57,7 +57,7 @@ class CoachDelete(DeleteView):
     model = Coach
     success_url = '/coaches/'
 
-class SearchResultView(ListView):
+class SearchResultsView(ListView):
     model = Business
     template_name = 'search_results.html'
 
