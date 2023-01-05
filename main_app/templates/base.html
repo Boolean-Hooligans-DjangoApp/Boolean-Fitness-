@@ -32,7 +32,18 @@
     
     
     <ul id="dropdown1" class="dropdown-content">
-      <button id="dark-mode-toggle">Toggle Dark Mode</button>
+  </div>
+  <div class="switch right">
+    <label>
+      Light
+      <input type="checkbox" id="dark-mode-toggle">
+      <span class="lever"></span>
+      Dark
+    </label>
+    <span class="material-icons">
+      dark_mode
+      </span>
+  </div>
       <li><a href="{% url 'about' %}">About</a></li>
       {% if user.is_authenticated %}
       <li><a href="{% url 'index' %}">Businesses</a></li>
@@ -48,7 +59,8 @@
 
     <main class="container">{% block content %} {% endblock %}</main>
     <div class="center-align">
-        <img src="https://i.imgur.com/C1eFpDx.gif" alt="Animated GIF" width="95" height="65" class="brand-logo left">
+        <img src="https://i.imgur.com/C1eFpDx.gif" alt="Animated GIF" width="95" height="65" class="brand-logo right">
+      </div>
       </div>
       <footer class="page-footer black">
         <div class="right">
@@ -59,8 +71,9 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.dropdown-trigger');
-      var instances = M.Dropdown.init(elems);
+      var instances = M.Dropdown.init(elems, {constrainWidth: false});
     });
+
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.carousel');
       var instances = M.Carousel.init(elems, {
@@ -83,14 +96,10 @@
         l.prev(1);
       }
     });
-    const toggle = document.getElementById('dark-mode-toggle');
-      if (localStorage.getItem('darkMode') === 'true') {
-      document.body.classList.add('dark');
-  }
 
-  toggle.addEventListener('click', function() {
-      document.body.classList.toggle('dark');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark'));
-  });
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+    });
   </script>
 </html>
