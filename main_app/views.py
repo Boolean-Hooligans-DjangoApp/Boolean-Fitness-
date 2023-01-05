@@ -59,15 +59,16 @@ class CoachDelete(DeleteView):
     success_url = '/coaches/'
 
 class SearchResultsView(ListView, FormView):
-    model = Business
+    model = Business, GroupClass, Coach
     template_name = 'search_results.html'
     form_class = SearchForm
 
     def get_queryset(self):
         query = self.request.GET.get('search')
         object_list = Business.objects.annotate(
-            search = SearchVector('name', 'location'),
+            search = SearchVector('name'),
             ).filter(search=SearchQuery(query))
+
         
         return object_list
 
