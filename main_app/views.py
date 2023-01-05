@@ -130,12 +130,18 @@ def signup(request):
             user = authenticate(username=username, password=raw_password)
             user_group, _ = Group.objects.get_or_create(name="Default User")
             bus_view_perm = Permission.objects.get(name='Can view business')
-            group_view_perm = Permission.objects.get(
-                name='Can view group class')
+            group_view_perm = Permission.objects.get(name='Can view group class')
             coach_view_perm = Permission.objects.get(name='Can view coach')
-            review_view_perm = Permission.objects.get(name='Can view review')
+            bus_review_view_perm = Permission.objects.get(name='Can view business review')
+            group_review_view_perm = Permission.objects.get(name='Can view group class review')
+            coach_review_view_perm = Permission.objects.get(name='Can view coach review')
             user_group.permissions.add(
-                bus_view_perm, group_view_perm, coach_view_perm, review_view_perm)
+                bus_view_perm, 
+                group_view_perm, 
+                coach_view_perm, 
+                bus_review_view_perm, 
+                group_review_view_perm, 
+                coach_review_view_perm)
             user.groups.add(user_group)
             login(request, user)
             return redirect('index')
