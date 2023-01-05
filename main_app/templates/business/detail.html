@@ -35,9 +35,9 @@
       <tbody>
         {% for review in business.review_set.all %}
           <tr>
-            <td>{{ review.date|date:"D d M Y" }}</td>
-            <td>{{review.review}}</td>
-            <td>{{review.comment}}</td>
+            <td>{{review.date|date:"D d M Y"}}</td>
+            <td>{{businessreview.review}}</td>
+            <td>{{businessreview.comment}}</td>
           </tr>
           {% endfor %}
       </tbody>

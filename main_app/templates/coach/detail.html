@@ -34,9 +34,9 @@
           <tbody>
             {% for review in coach.review_set.all %}
               <tr>
-                <td>{{coach.review.date|date:"D d M Y"}}</td>
-                <td>{{coach.review.review}}</td>
-                <td>{{coach.review.comment}}</td>
+                <td>{{review.date|date:"D d M Y"}}</td>
+                <td>{{review.review}}</td>
+                <td>{{review.comment}}</td>
               </tr>
               {% endfor %}
           </tbody>

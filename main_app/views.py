@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from .forms import SignUpForm
-from .models import Business, GroupClass, Coach, Review
+from .models import Business, GroupClass, Coach
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import GroupClassReviewForm, BusinessReviewForm, CoachReviewForm
 
