@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
+from django.views.generic import ListView
 from .forms import SignUpForm
 from .models import Business, GroupClass, Coach
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -55,6 +56,10 @@ class CoachUpdate(UpdateView):
 class CoachDelete(DeleteView):
     model = Coach
     success_url = '/coaches/'
+
+class SearchResultView(ListView):
+    model = Business
+    template_name = 'search_results.html'
 
 
 def home(request):

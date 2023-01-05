@@ -38,5 +38,6 @@ urlpatterns = [
     path('profile/upgrade', views.upgrade_profile, name='upgrade_profile'),
     path('profile/downgrade', views.downgrade_profile, name='downgrade_profile'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('search/', SearchResultsView.as_view(), name= 'search_results'),
 
 ]
