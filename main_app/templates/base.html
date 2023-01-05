@@ -19,8 +19,8 @@
           <ul>
             <li>
                 <a href="{% url 'home' %}" class="left brand-logo"
-                >&nbsp;&nbsp;Boolean Fitness  <img src="https://i.imgur.com/C1eFpDx.gif" alt="Animated GIF" width="95" height="65" class="brand-logo"></a>
-              
+                >&nbsp;&nbsp;Boolean Fitness</a>
+                
             </li>
           </ul>
           <ul class="right">
@@ -29,8 +29,10 @@
         </div>
       </nav>
     </header>
-
+    
+    
     <ul id="dropdown1" class="dropdown-content">
+      <button id="dark-mode-toggle">Toggle Dark Mode</button>
       <li><a href="{% url 'about' %}">About</a></li>
       {% if user.is_authenticated %}
       <li><a href="{% url 'index' %}">Businesses</a></li>
@@ -45,8 +47,11 @@
     </ul>
 
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer black">
-      <div class="right ">
+    <div class="center-align">
+        <img src="https://i.imgur.com/C1eFpDx.gif" alt="Animated GIF" width="95" height="65" class="brand-logo left">
+      </div>
+      <footer class="page-footer black">
+        <div class="right">
         All Rights Reserved, &copy; 2022 Boolean Hooligans &nbsp;
       </div>
     </footer>
@@ -78,5 +83,14 @@
         l.prev(1);
       }
     });
+    const toggle = document.getElementById('dark-mode-toggle');
+      if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark');
+  }
+
+  toggle.addEventListener('click', function() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+  });
   </script>
 </html>

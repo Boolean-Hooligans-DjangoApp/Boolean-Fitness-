@@ -43,11 +43,13 @@ class GroupClassDelete(DeleteView):
 class CoachCreate(CreateView):
     model = Coach
     fields = ['name', 'email', 'location', 'specialty', 'bio', 'availability']
+    success_url = '/coaches/'
 
 
 class CoachUpdate(UpdateView):
     model = Coach
     fields = ['name', 'email', 'location', 'specialty', 'bio', 'availability']
+    success_url = '/coaches/'
 
 
 class CoachDelete(DeleteView):

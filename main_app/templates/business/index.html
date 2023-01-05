@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Business List</h1>
+<h1>Businesses<a class="btn-floating btn-large waves-effect waves-light right red" href="{% url 'business_create' %}"><i class="material-icons">add</i></a></h1> 
+
 {% if perms.main_app.add_business %}
-  <a href="{% url 'business_create' %}">Create a business</a>
+  
+ 
 {% endif %}
 
 {% for business in businesses %}
   <div class="card">
     <a href='{% url 'business_detail' business.id %}'>
-    <div class="card-content">
+    <div class="card-content coachClass">
 
-      <span class="card-title">{{ business.name }}</span>
+      <span class="card-title ">{{ business.name }}</span>
       <p>Location: {{ business.location }}</p>
       <p>Hours: {{ business.business_hours }}</p>
 
