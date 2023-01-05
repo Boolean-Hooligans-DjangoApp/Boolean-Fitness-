@@ -3,11 +3,11 @@
 <h1 class="homeTitle center">Welcome to Boolean Fitness</h1>
 <p class="slogan">Take the first step towards a healthier lifestyle and sign up for Boolean Fitness today.</p>
 <div class="carousel carousel-slider center">
-    <a onclick="prev()" class="prev btn-floating btn waves-effect waves-light red"><i class="material-icons">chevron_left</i></a>
+    <a onclick="prev()" class="prev btn-floating btn-large pulse btn waves-effect waves-light left transparent"><i class="material-icons">chevron_left</i></a>
 
-    <a onclick="next()" class="next btn-floating btn waves-effect waves-light red"><i class="material-icons">chevron_right</i></a>
+    <a onclick="next()" class="next btn-floating btn-large pulse btn waves-effect waves-light right transparent"><i class="material-icons">chevron_right</i></a>
     <div class="carousel-fixed-item left">
-        <a class="btn waves-effect white grey-text darken-text-2 push-s5">next</a>
+       
     </div>
     <div class="carousel-fixed-item center"></div>
     <div class="carousel-item" href="#one!">
@@ -19,15 +19,17 @@
     <div class="carousel-item" href="#three!">
         <img src="https://i.imgur.com/nSjaCJa.jpg" alt="Wellness Coach">
     </div>
-    <div class="carousel-item blue white-text" href="#four!">
-        <h2>Fourth Panel</h2>
-        <p class="white-text">This is your fourth panel</p>
+    <div class="carousel-item" href="#four!">
+        <img src="https://i.imgur.com/Iex5dqr.jpg" alt="Nutritionist">
+    </div>
+    <div class="carousel-item" href="#five!">
+        <img src="https://i.imgur.com/rz2dvk2.jpg" alt="Chiropractor">
     </div>
     </div>
 <br>
 <div style="display: flex; justify-content: space-evenly; align-items: center;">
-    <a class="waves-effect waves-light btn-small blue" href="{% url 'signup' %}">Sign Up Now!</a>
-    <a class="waves-effect waves-light btn-small blue" href="{% url 'login' %}">Login!</a>
+    <a class="waves-effect waves-light btn-small blue col s12 m2 z-depth-5" href="{% url 'signup' %}">Sign Up Now!</a>
+    <a class="waves-effect waves-light btn-small blue col s12 m2 z-depth-5" href="{% url 'login' %}">Login!</a>
 </div>
 <p class="motto">Whether you're a beginner or a seasoned athlete, Boolean Fitness has something for everyone. Sign up now and start your journey towards a healthier you!</p>
 

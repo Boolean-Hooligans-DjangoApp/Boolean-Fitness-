@@ -45,8 +45,25 @@ body {
     font-family: Chalkboard;
     text-align: center;
   }
+
+  input {
+    background-color: white;
+  }
     
-    
-    
+  .dark {
+    background-color: rgb(70, 68, 68);
+    color: grey;
+  }
+  
+  .coachClass {
+  color: blue;
+  background-color: rgba(97, 179, 209, 0.384);
+  
+  }
+
+  .coachClass:hover {
+    background-color: rgb(119, 220, 218);
+    box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2);
+  }
     
 
