@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if object %}
-<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+<h1>Edit <span class="red">{{object.name}}</span></h1>
 {% else %}
 <h1>Create a Group Class</h1>
 {% endif %}
@@ -17,4 +17,13 @@
     </table>
     <input type="submit" value="Submit!" class="btn">
   </form>
+  <script>
+    const dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+      format: 'yyyy-mm-dd',
+      defaultDate: new Date(),
+      setDefaultDate: true,
+      autoClose: true
+    });
+  </script>
 {% endblock %}

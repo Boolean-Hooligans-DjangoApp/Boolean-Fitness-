@@ -2,7 +2,8 @@
 {% block content %}
 
 <h1>Coaches/Trainers</h1>
-
+<br>
+<a href="{% url 'coach_create' %}">Add a Coach/Trainer Profile</a>
 {% for coach in coaches %}
     <div class="card">
         <a href='{% url 'coach_detail' coach.id %}'>
