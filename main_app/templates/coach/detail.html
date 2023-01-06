@@ -15,10 +15,12 @@
         <p>Specialty: {{ coach.specialty }}</p>
         <p>Schedule/Availability: {{ coach.availability }}</p>
         </div>
+        {% if perms.main_app.add_business %}
         <div class="card-action">
             <a href="{% url 'coach_update' coach.id %}">Edit</a>
             <a href="{% url 'coach_delete' coach.id %}">Delete</a>
         </div>
+        {% endif %}
     </div>
     </div>
     <div class="col s6">

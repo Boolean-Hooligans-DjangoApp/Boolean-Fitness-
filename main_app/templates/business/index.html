@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Businesses<a class="btn-floating btn-large waves-effect waves-light right red" href="{% url 'business_create' %}"><i class="material-icons">add</i></a></h1> 
+<h1>Businesses
+  {% if perms.main_app.add_business %}
+  <a class="btn-floating btn-large waves-effect waves-light right red" href="{% url 'business_create' %}"><i class="material-icons">add</i></a>
+  {% endif %}
+</h1> 
 
-{% if perms.main_app.add_business %}
-  
- 
-{% endif %}
+
 
 {% for business in businesses %}
   <div class="card">
