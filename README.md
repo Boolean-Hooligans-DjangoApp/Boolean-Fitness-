@@ -19,7 +19,7 @@ Trello Board : https://trello.com/b/IXoDn0hm/group-project-4
 
 ## Deploy Application
 
-To be determined.....
+https://shrouded-retreat-81056.herokuapp.com/
 
 ### Technologies Used
     - Python 3
@@ -29,13 +29,17 @@ To be determined.....
     - Javascript 
     - Materialize 
     - PSQL
+    - Heroku
 
 
 ### Next Steps 
 
-    - Google API
+    - Google API (add location specific information to businesses)
+    - Image Upload (include the ability to upload images to the model detail pages)
+    - Star Rating instead of numbers
     - Stripe API (accept payment for premium accounts)
-
+    - Yelp API (include local business information to expand search feature)
+    - Expand Search to multiple models 
 
 
 
