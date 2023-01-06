@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if object %}
+<h1>Edit <span class="red">{{object.name}}</span></h1>
+{% else %}
+<h1>Create a Business</h1>
+{% endif %}
+  <!-- Leaving the action empty makes the form post to the same url used to display it -->
+  <form action="" method="POST">
+    <!-- Django requires the following for security purposes -->
+    {% csrf_token %}
+    <table>
+      <!-- Render the inputs inside of <tr>s & <td>s -->
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn red">
+  </form>
+  <script>
+
+    const selectEl = document.getElementById('id_business_type');
+    M.FormSelect.init(selectEl);
+    const selectEl2 = document.getElementById('id_business_hours');
+    M.FormSelect.init(selectEl2);
+    
+  </script>
+{% endblock %}

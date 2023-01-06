@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Boolean Fitness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <header class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper red">
+          <ul>
+            <li>
+                <a href="{% url 'home' %}" class="left brand-logo"
+                >&nbsp;&nbsp;Boolean Fitness</a>
+                
+            </li>
+          </ul>
+          <ul class="right">
+            <li><a href="{% url 'search_results' %}"><i class="material-icons left">search</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">reorder</i></a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
+    
+    <ul id="dropdown1" class="dropdown-content">
+  </div>
+  <div class="switch right">
+    <label>
+      Light
+      <input type="checkbox" id="dark-mode-toggle">
+      <span class="lever"></span>
+      Dark
+    </label>
+    <span class="material-icons">
+      dark_mode
+      </span>
+  </div>
+      <li><a href="{% url 'about' %}"><i class="material-icons left">info</i>About</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'index' %}"><i class="material-icons left">business_center</i>Businesses</a></li>
+      <li><a href="{% url 'class_index' %}"><i class="material-icons left">directions_bike</i>Group Activities</a></li>
+      <li><a href="{% url 'coach_index' %}"><i class="material-icons left">fitness_center</i>Wellness Coaches</a></li>
+      <li><a href="{% url 'profile' %}"><i class="material-icons left">account_circle</i>Profile</a></li>
+      <li><a href="{% url 'logout' %}"><i class="material-icons left">lock_open</i>Log Out</a></li>
+      {% else %}
+      <li><a href="{% url 'signup' %}"><i class="material-icons left">group_add</i>Sign Up</a></li>
+      <li><a href="{% url 'login' %}"><i class="material-icons left">vpn_key</i>Log In</a></li>
+      {% endif %}
+    </ul>
+
+    <main class="container">{% block content %} {% endblock %}</main>
+    <div class="center-align">
+        <img src="https://i.imgur.com/C1eFpDx.gif" alt="Animated GIF" width="95" height="65" class="brand-logo right">
+      </div>
+      </div>
+      <footer class="page-footer black">
+        <div class="right">
+        All Rights Reserved, &copy; 2022 Boolean Hooligans &nbsp;
+      </div>
+    </footer>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.dropdown-trigger');
+      var instances = M.Dropdown.init(elems, {constrainWidth: false});
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.carousel');
+      var instances = M.Carousel.init(elems, {
+        fullWidth: true,
+        indicators: true,
+        duration: 175
+      });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      window.next = function() {
+        var el = document.querySelector(".carousel");
+        var l = M.Carousel.getInstance(el);
+        l.next(1);
+      }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+      window.prev = function() {
+        var el = document.querySelector(".carousel");
+        var l = M.Carousel.getInstance(el);
+        l.prev(1);
+      }
+    });
+
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+    });
+  </script>
+</html>

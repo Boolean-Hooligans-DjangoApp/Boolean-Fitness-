@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Search Results</h1>
+<form action= {% url 'search_results' %} method= 'GET'>
+    {{ form }}
+</form>
+<ul>
+    {% for business in object_list %}
+    <li>
+        <div class="card">
+            <a href='{% url 'business_detail' business.id %}'>
+            <div class="card-content coachClass">
+        
+              <span class="card-title ">{{ business.name }}</span>
+              <p>Location: {{ business.location }}</p>
+              <p>Hours: {{ business.business_hours }}</p>
+        
+        
+            </div>
+            </a>
+          </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

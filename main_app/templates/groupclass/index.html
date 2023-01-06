@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Group Activities
+<a class="btn-floating btn-large waves-effect waves-light right red col s12 m2 z-depth-5" href="{% url 'class_create' %}"><i class="material-icons">add</i></a></h1>
+
+{% if perms.main_app.view_groupclass %}
+{% for groupclass in groupclasses %}
+  <div class="card">
+    <a href='{% url 'class_detail' groupclass.id %}'>
+    <div class="card-content coachClass">
+
+      <span class="card-title">{{ groupclass.name }}</span>
+      <p>Date: {{ groupclass.date }}</p>
+
+
+
+    </div>
+    </a>
+  </div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

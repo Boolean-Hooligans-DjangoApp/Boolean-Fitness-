@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Wellness Coaches 
+    {% if perms.main_app.add_business %}
+    <a class="btn-floating btn-large waves-effect waves-light right red col s12 m2 z-depth-5" href="{% url 'coach_create' %}"><i class="material-icons">add</i></a>
+    {% endif %}
+</h1>
+<br>
+
+{% for coach in coaches %}
+    <div class="card">
+        <a href='{% url 'coach_detail' coach.id %}'>
+        <div class="card-content coachClass">
+
+        <span class="card-title col s12 m2">{{ coach.name }}</span>
+        <p>Specialty: {{ coach.specialty }}</p>
+
+        </div>
+        </a>
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ groupclass.name }}</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+
+      <span class="card-title">Group Activity Details:</span>
+      <p>Date: {{ groupclass.date }}</p>
+      <p>Description: {{ groupclass.description }}</p>
+
+    </div>
+    <div class="card-action">
+        <a href="{% url 'class_update' groupclass.id %}">Edit</a>
+        <a href="{% url 'class_delete' groupclass.id %}">Delete</a>
+      </div>
+    </div>  
+  </div>
+  <div class="col s6">
+    <form action="{% url 'add_groupclass_review' groupclass.id %}" method="POST">
+      {% csrf_token %}
+      {{ review_form.as_p }}
+      <input type="submit" class="btn" value="Add Review">
+    </form>
+    <table class="striped">
+      <thead>
+      </tr><th>Comment</th></tr>
+      </thead>
+      <tbody>
+        {% for review in groupclass.groupclassreview_set.all %}
+          <tr>
+            <td>{{ review.date|date:"D d M Y" }}</td>
+            <td>{{review.review}}</td>
+            <td>{{review.comment}}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <script>
+    const selectEl = document.getElementById('id_review');
+    M.FormSelect.init(selectEl);
+  </script>
+
+
+{% endblock %}
