@@ -11,9 +11,8 @@
 ![OurERD](https://i.imgur.com/3d0Ckzp.png)
 
 ## Screenshots
-![Wireframe](https://i.imgur.com/KHdRle5.png)
-![Wireframe](https://i.imgur.com/rhd6E3z.png)
-![Wireframe](https://i.imgur.com/JvBL3Kd.png)
+![Screenshots](https://i.imgur.com/PjMaXAo.png)
+![Screenshots](https://i.imgur.com/4VkF8Eu.png)
 
 ## Our Trello Board
 Trello Board : https://trello.com/b/IXoDn0hm/group-project-4
