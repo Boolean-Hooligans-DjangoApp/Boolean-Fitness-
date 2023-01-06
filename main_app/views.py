@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.models import Group, Permission, User
 from django.contrib.contenttypes.models import ContentType
 from django.views.generic import ListView, FormView
 from django.contrib.postgres.search import SearchVector, SearchQuery
@@ -10,6 +10,15 @@ from .models import Business, GroupClass, Coach
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import GroupClassReviewForm, BusinessReviewForm, CoachReviewForm, SearchForm
 
+
+class ProfileUpdate(UpdateView):
+    model = User
+    fields = ['email', 'first_name', 'last_name' ]
+    success_url = '/profile/'
+
+class ProfileDelete(DeleteView):
+    model = User
+    success_url = '/home/'
 
 class BusinessCreate(CreateView):
     model = Business

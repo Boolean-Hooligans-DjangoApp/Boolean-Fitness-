@@ -1,9 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{ user }} Profile</h1>
-{{ perms.main_app }}
+{% comment %} {{ perms.main_app }} {% endcomment %}
+<div class="card">
+    
+    <div class="card-content ">
+
+      <span class="card-title ">Profile Details: </span>
+      <p>Email: {{ user.email }}</p>
+      <p>First Name: {{ user.first_name }}</p>
+      <p>Last Name: {{ user.last_name }}</p>
+        
+    </div>
+    <div class="card-action ">
+        <a href="{% url 'profile_update' user.id %}">Edit</a>
+        <a href="{% url 'profile_delete' user.id %}">Delete</a>
+      </div>
+  </div>
 <br>
-<a href="{% url 'upgrade_profile' %}">Upgrade to Business Account</a>
-<br>
-<a href="{% url 'downgrade_profile' %}">Downgrade Account</a>
+<a href="{% url 'upgrade_profile' %}" class="waves-effect waves-light btn"><i class="material-icons left">arrow_upward</i>Upgrade to Business Account</a>
+
+<a href="{% url 'downgrade_profile' %}" class="waves-effect waves-light btn"><i class="material-icons left">arrow_downward</i>Downgrade Account</a>
 {% endblock %}
